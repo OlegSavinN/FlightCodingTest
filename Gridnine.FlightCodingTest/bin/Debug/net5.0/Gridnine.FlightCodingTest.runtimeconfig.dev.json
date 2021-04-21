@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Krake\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Krake\\.nuget\\packages"
+    ]
+  }
+}
