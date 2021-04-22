@@ -43,21 +43,20 @@ namespace Gridnine.FlightCodingTest
             return flightInThePast;
         }
 
-        public List<Flight> ExtractSpentOnEath(double limit, IList<Flight> listflights)
+        public List<Flight> ExtractSpentOnEath(TimeSpan limit, IList<Flight> listflights)
         {
             List<Flight> flightSpentOnEath = new List<Flight>();
-
+            
             foreach (Flight flight in listflights)
             {
-                double counter = 0;
+                TimeSpan waitingTime = default;
 
                 for (int i = 1; i < flight.Segments.Count; i++)
                 {
-                    TimeSpan date4d = flight.Segments[i].DepartureDate.Subtract(flight.Segments[i-1].ArrivalDate);
-                    counter += date4d.TotalSeconds;
+                    waitingTime += flight.Segments[i].DepartureDate.Subtract(flight.Segments[i-1].ArrivalDate);
                 }
 
-                if(counter >= limit)
+                if(waitingTime >= limit)
                 {
                     flightSpentOnEath.Add(flight);
                 }

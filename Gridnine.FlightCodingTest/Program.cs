@@ -12,10 +12,16 @@ namespace Gridnine.FlightCodingTest
             FlightFilter flightFilter = new FlightFilter();
 
             IList<Flight> flights = flightBuilder.GetFlights();
+            TimeSpan limit = new TimeSpan(2, 0, 0);
 
+            Console.WriteLine("Already Left");
             OutputMessage(flightFilter.ExtractAlreadyLeft(DateTime.Now, flights));
+
+            Console.WriteLine("Flight in the past");
             OutputMessage(flightFilter.ExtractFlightInThePast(flights));
-            OutputMessage(flightFilter.ExtractSpentOnEath(, flights));
+
+            Console.WriteLine("Time spend on the ground more than two hours");
+            OutputMessage(flightFilter.ExtractSpentOnEath(limit, flights));
 
             void OutputMessage(IList<Flight> flightsList)
             {
